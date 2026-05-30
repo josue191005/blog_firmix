@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cómo la IA te salva de firmar un contrato abusivo en 2 minutos | Firmix AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Colores extraídos del Búho de Firmix AI */
+            --color-primary: #1F384C;   /* Azul noche - Texto principal y fondos oscuros */
+            --color-secondary: #89C0B3; /* Verde menta - Detalles y fondos suaves */
+            --color-accent: #DEA535;    /* Amarillo mostaza - Botones y alertas (Ojos del búho) */
+            
+            /* Colores de UI */
+            --bg-body: #F4F5F7;
+            --bg-surface: #FFFFFF;
+            --text-main: #2A2A2A;
+            --text-muted: #555555;
+            --border-color: #E2E8F0;
+            
+            /* Espaciado y Tipografía */
+            --font-main: 'Montserrat', sans-serif;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a:focus-visible, button:focus-visible, input:focus-visible {
+            outline: 3px solid var(--color-accent);
+            outline-offset: 3px;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background-color: var(--color-primary);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #FFFFFF;
+            font-weight: 800;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+        
+        .brand-logo svg { width: 40px; height: 40px; }
+
+        /* BOTONES */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-action {
+            background-color: var(--color-accent);
+            color: var(--color-primary);
+            box-shadow: 0 4px 6px rgba(222, 165, 53, 0.2);
+        }
+
+        .btn-action:hover {
+            background-color: #c9922b;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(222, 165, 53, 0.3);
+        }
+
+        /* CONTENEDOR DEL BLOG */
+        .blog-container {
+            max-width: 800px;
+            margin: 3rem auto;
+            background-color: var(--bg-surface);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .blog-header { padding: 3rem 3rem 1rem; }
+
+        .category-tag {
+            background-color: rgba(137, 192, 179, 0.2);
+            color: var(--color-primary);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            color: var(--color-primary);
+            font-size: 2.4rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .author-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 2px solid rgba(137, 192, 179, 0.3);
+            padding-bottom: 1.5rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background-color: var(--color-secondary);
+            border: 2px solid var(--color-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .author-details p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        .author-details strong { color: var(--color-primary); }
+
+        /* CONTENIDO */
+        .blog-content { padding: 0 3rem 3rem; }
+
+        .blog-content h2 {
+            color: var(--color-primary);
+            font-size: 1.6rem;
+            margin: 2.5rem 0 1rem;
+        }
+
+        .blog-content p {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            margin-bottom: 1.5rem;
+        }
+
+        /* ESPACIOS PARA IMÁGENES */
+        .img-placeholder {
+            width: 100%;
+            background-color: #F8F9FA;
+            border: 2px dashed #CBD5E1;
+            border-radius: var(--radius-md);
+            padding: 3rem 1rem;
+            text-align: center;
+            margin: 2rem 0;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+        
+        .img-placeholder span {
+            display: block;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        /* CAJA DE DOLOR (Pain Point) */
+        .pain-point-box {
+            background-color: rgba(222, 165, 53, 0.1);
+            border-left: 6px solid var(--color-accent);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        }
+
+        .pain-point-box p {
+            margin: 0;
+            font-style: italic;
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        /* LISTAS */
+        .benefit-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .benefit-list li {
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .benefit-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 2px;
+            background-color: var(--color-secondary);
+            color: var(--color-primary);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 800;
+        }
+
+        /* CTA FINAL */
+        .cta-section {
+            background-color: var(--color-primary);
+            padding: 3rem;
+            text-align: center;
+            color: white;
+            border-radius: var(--radius-lg);
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background-color: var(--color-secondary);
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+
+        .cta-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--color-secondary);
+        }
+        
+        .cta-section p { color: #E2E8F0; }
+
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; gap: 1rem; padding: 1rem; }
+            .blog-container { margin: 1rem; border-radius: var(--radius-md); }
+            .blog-header, .blog-content, .cta-section { padding: 1.5rem; }
+            h1 { font-size: 1.8rem; }
+            .btn { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" aria-label="Navegación principal">
+        <a href="#" class="brand-logo" aria-label="Ir al inicio de Firmix AI">
+           <img src="BuhoFirmix.jpeg" alt="Logo" style="width: 40px; height: 40px; object-fit: contain;">
+           Firmix AI
+        </a>
+        <a href="#test-legal" class="btn btn-action">Probar IA Gratis</a>
+    </nav>
+
+    <main class="blog-container">
+        
+        <header class="blog-header">
+            <span class="category-tag">Supervivencia Legal 101</span>
+            <h1>Cómo la Inteligencia Artificial te salva de firmar un contrato abusivo (y perder dinero) en 2 minutos</h1>
+            
+            <div class="author-meta">
+                <div class="author-avatar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 14L12 16L14 14" stroke="#DEA535" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="7" cy="9" r="1.5" fill="#1F384C"/>
+                        <circle cx="17" cy="9" r="1.5" fill="#1F384C"/>
+                    </svg>
+                </div>
+                <div class="author-details">
+                    <p>Por <strong>El Búho de Firmix AI</strong></p>
+                    <p>Tiempo de lectura: 3 minutos (menos de lo que tardas en leer una cláusula dudosa)</p>
+                </div>
+            </div>
+        </header>
+
+        <article class="blog-content">
+            <p>Imagínate esto: Acabas de encontrar el departamento perfecto. El precio tiene sentido, la presión del agua de la ducha es excelente y ya estás pensando dónde poner tu sofá. Todo es felicidad hasta que el propietario te envía "el documento".</p>
+            
+            <p>De repente, te enfrentas a 10 páginas escritas en lo que parece latín antiguo, llenas de frases como <em>"cláusula resolutoria de pleno derecho"</em> o <em>"renuncia a la jurisdicción y fuero"</em>.</p>
+            
+            <div class="pain-point-box">
+                <p>¿Te suena esta historia? Esa ligera taquicardia al firmar la última página cruzando los dedos para no estar vendiéndole tu alma (o tus ahorros) al arrendador.</p>
+            </div>
+
+            <h2>El peligro de la técnica milenaria de "Firmar y Rezar"</h2>
+            <p>Seamos honestos. Contratar a un abogado para que revise el contrato de alquiler de un departamento te parece un gasto excesivo, así que optas por la vieja confiable: leerlo por encima, asentir con la cabeza y firmar.</p>
+            
+            <p>El problema es que un contrato con "letras chiquitas" maliciosas puede significar perder todo tu mes de garantía o que te cobren reparaciones que no te corresponden. No necesitas un título en derecho para saber que eso no es justo.</p>
+
+
+            <h2>Tu abogado de bolsillo (que no cobra por horas)</h2>
+            <p>Aquí es donde la tecnología se pone la capa de héroe. En <strong>Firmix AI</strong>, nos cansamos de ver cómo el lenguaje legal complicado asustaba a la gente. Así que entrenamos a nuestra inteligencia artificial (sí, a mí, el Búho) para que lea esos documentos por ti.</p>
+            
+            <ul class="benefit-list">
+                <li><strong>Traducción a idioma "Humano":</strong> Convertimos párrafos incomprensibles en resúmenes claros. Si la cláusula dice "el arrendatario asume detrimentos", nosotros te decimos: "Ojo, te quieren cobrar por el desgaste natural del depa".</li>
+                <li><strong>Detector de trampas:</strong> Identificamos al instante penalidades abusivas o condiciones ilegales con un sistema de semáforo.</li>
+                <li><strong>Armas para negociar:</strong> No solo te asustamos; te damos las palabras exactas que debes usar para pedirle al dueño que cambie esa cláusula.</li>
+            </ul>
+
+            <h2>¿Cómo funciona? (Spoiler: Es ridículamente fácil)</h2>
+            <p>No tienes que descargar nada complicado. Subes el PDF de tu contrato a Firmix AI y, en lo que tardas en prepararte un café (menos de 2 minutos), te entregamos un reporte completo de qué está bien, qué está raro y qué no deberías firmar ni loco.</p>
+
+            <section class="cta-section" id="test-legal">
+                <h3>¿A punto de firmar un papel importante?</h3>
+                <p>No dejes tus finanzas a la suerte. Deja que mi vista de búho revise esa letra pequeña por ti. Es rápido, fácil y te ahorrará muchos dolores de cabeza.</p>
+                <br>
+                <a href="#" class="btn btn-action" style="font-size: 1.1rem; padding: 15px 30px;">Escanear mi contrato ahora</a>
+                <p style="margin-top: 15px; font-size: 0.85rem; color: #89C0B3;">Haz tu primer test gratis. Cero estrés garantizado.</p>
+            </section>
+
+        </article>
+    </main>
+
+</body>
+</html>
