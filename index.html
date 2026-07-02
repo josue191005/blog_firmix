@@ -330,7 +330,281 @@
 
             <h2>¿Cómo funciona? (Spoiler: Es ridículamente fácil)</h2>
             <p>No tienes que descargar nada complicado. Subes el PDF de tu contrato a Firmix AI y, en lo que tardas en prepararte un café (menos de 2 minutos), te entregamos un reporte completo de qué está bien, qué está raro y qué no deberías firmar ni loco.</p>
+<!-- BLOQUE ALIANZA PROPER - INICIO -->
+<section class="proper-partner-card" aria-labelledby="proper-title">
+    <style>
+        /* ================================
+           BLOQUE ALIANZA PROPER
+           Adaptado al estilo Firmix AI
+        ================================ */
 
+        .proper-partner-card {
+            margin: 2.5rem 0;
+            padding: 2rem;
+            border-radius: var(--radius-lg, 20px);
+            background:
+                radial-gradient(circle at top right, rgba(137, 192, 179, 0.25), transparent 35%),
+                linear-gradient(135deg, rgba(31, 56, 76, 0.98), rgba(31, 56, 76, 0.92));
+            border: 1px solid rgba(137, 192, 179, 0.35);
+            box-shadow: 0 12px 28px rgba(31, 56, 76, 0.18);
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .proper-partner-card::before {
+            content: "";
+            position: absolute;
+            width: 160px;
+            height: 160px;
+            right: -55px;
+            bottom: -55px;
+            background-color: var(--color-secondary, #89C0B3);
+            border-radius: 50%;
+            opacity: 0.12;
+        }
+
+        .proper-partner-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .proper-logo {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1;
+            color: #38BDF8;
+        }
+
+        .proper-logo span {
+            color: #7DD3FC;
+        }
+
+        .proper-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background-color: rgba(222, 165, 53, 0.15);
+            color: var(--color-accent, #DEA535);
+            border: 1px solid rgba(222, 165, 53, 0.35);
+            border-radius: 50px;
+            padding: 7px 13px;
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.7px;
+            white-space: nowrap;
+        }
+
+        .proper-partner-card h3 {
+            color: #ffffff;
+            font-size: 1.55rem;
+            line-height: 1.25;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .proper-partner-card p {
+            color: rgba(255, 255, 255, 0.82);
+            font-size: 1rem;
+            line-height: 1.65;
+            margin-bottom: 1.3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .proper-partner-card p strong {
+            color: #ffffff;
+        }
+
+        .proper-benefits-list {
+            list-style: none;
+            margin: 1.5rem 0 2rem;
+            padding: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .proper-benefits-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            color: rgba(255, 255, 255, 0.82);
+            font-size: 0.98rem;
+            line-height: 1.45;
+            margin-bottom: 1rem;
+            padding-left: 0;
+        }
+
+        .proper-benefits-list li::before {
+            content: "✓";
+            flex: 0 0 24px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: var(--color-secondary, #89C0B3);
+            color: var(--color-primary, #1F384C);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.9rem;
+            margin-top: 1px;
+        }
+
+        .proper-benefits-list strong {
+            color: #ffffff;
+        }
+
+        .proper-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .proper-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background-color: var(--color-accent, #DEA535);
+            color: var(--color-primary, #1F384C) !important;
+            padding: 13px 24px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 800;
+            text-decoration: none;
+            box-shadow: 0 6px 14px rgba(222, 165, 53, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        .proper-btn:hover {
+            background-color: #c9922b;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(222, 165, 53, 0.34);
+        }
+
+        .proper-note {
+            color: rgba(255, 255, 255, 0.62);
+            font-size: 0.82rem;
+        }
+
+        /* Modo oscuro */
+        [data-theme="dark"] .proper-partner-card,
+        body.dark-mode .proper-partner-card,
+        html.dark-mode .proper-partner-card {
+            background:
+                radial-gradient(circle at top right, rgba(56, 189, 248, 0.16), transparent 35%),
+                linear-gradient(135deg, #0F172A, #111827);
+            border-color: rgba(56, 189, 248, 0.22);
+            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35);
+        }
+
+        /* Modo claro */
+        [data-theme="light"] .proper-partner-card,
+        body.light-mode .proper-partner-card,
+        html.light-mode .proper-partner-card {
+            background:
+                radial-gradient(circle at top right, rgba(137, 192, 179, 0.25), transparent 35%),
+                linear-gradient(135deg, rgba(31, 56, 76, 0.98), rgba(31, 56, 76, 0.92));
+            border-color: rgba(137, 192, 179, 0.35);
+        }
+
+        @media (max-width: 768px) {
+            .proper-partner-card {
+                padding: 1.5rem;
+                margin: 2rem 0;
+            }
+
+            .proper-partner-top {
+                flex-direction: column;
+                gap: 0.9rem;
+            }
+
+            .proper-badge {
+                white-space: normal;
+            }
+
+            .proper-partner-card h3 {
+                font-size: 1.35rem;
+            }
+
+            .proper-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .proper-btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .proper-note {
+                text-align: center;
+            }
+        }
+    </style>
+
+    <div class="proper-partner-top">
+        <div class="proper-logo">proper<span>.</span></div>
+        <div class="proper-badge">🤝 Alianza Estratégica</div>
+    </div>
+
+    <h3 id="proper-title">
+        ¿Buscas alquilar en Lima? Simplifica tus requisitos con Proper
+    </h3>
+
+    <p>
+        Alquilar un departamento en el Perú no tiene por qué convertirse en una pesadilla de trámites.
+        Con <strong>Proper</strong>, puedes acceder a un ecosistema inmobiliario digital donde la evaluación
+        crediticia ayuda a reemplazar las trabas burocráticas del aval tradicional.
+    </p>
+
+    <ul class="proper-benefits-list">
+        <li>
+            <span>
+                <strong>Requisitos más flexibles:</strong>
+                calificación basada en tu solvencia real, no únicamente en avales con propiedad.
+            </span>
+        </li>
+
+        <li>
+            <span>
+                <strong>Proceso digital:</strong>
+                búsqueda, evaluación y gestión pensadas para reducir fricción al momento de alquilar.
+            </span>
+        </li>
+
+        <li>
+            <span>
+                <strong>Mayor transparencia:</strong>
+                una experiencia más ordenada para quienes quieren alquilar sin perder tiempo en trámites innecesarios.
+            </span>
+        </li>
+    </ul>
+
+    <div class="proper-actions">
+        <a href="https://proper.com.pe" target="_blank" rel="noopener noreferrer" class="proper-btn">
+            Ver alquileres en Proper ↗
+        </a>
+
+        <span class="proper-note">
+            Ideal si estás buscando depa y quieres evitar requisitos complicados.
+        </span>
+    </div>
+</section>
+<!-- BLOQUE ALIANZA PROPER - FIN -->
+            
             <section class="cta-section" id="test-legal">
                 <h3>¿A punto de firmar un papel importante?</h3>
                 <p>No dejes tus finanzas a la suerte. Deja que mi vista de búho revise esa letra pequeña por ti. Es rápido, fácil y te ahorrará muchos dolores de cabeza.</p>
